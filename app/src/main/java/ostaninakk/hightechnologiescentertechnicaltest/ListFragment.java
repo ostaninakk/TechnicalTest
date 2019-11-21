@@ -88,12 +88,15 @@ public class ListFragment extends Fragment {
                 view = getLayoutInflater().inflate(R.layout.list_item, viewGroup, false);
             }
 
+            // Имя
             TextView nameTextView = view.findViewById(R.id.name);
             nameTextView.setText(employeeList.get(i).getName());
 
+            // Номер телефона
             TextView phoneTextView = view.findViewById(R.id.phone_number);
             phoneTextView.setText(employeeList.get(i).getPhoneNumber());
 
+            // Компетенции
             TextView skillsTextView = view.findViewById(R.id.skills);
             List<String> skills = employeeList.get(i).getSkills();
             skillsTextView.setText(TextUtils.join(", ", skills));
