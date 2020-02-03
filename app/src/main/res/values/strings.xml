@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">HighTechnologiesCenterTechnicalTest</string>
+    <string name="employees_are_not_found">Employees are not found. Please, check the internet connection and try again.</string>
+    <string name="refresh">Refresh</string>
 </resources>

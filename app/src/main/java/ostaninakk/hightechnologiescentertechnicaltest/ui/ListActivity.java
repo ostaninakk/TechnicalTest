@@ -1,8 +1,11 @@
-package ostaninakk.hightechnologiescentertechnicaltest;
+package ostaninakk.hightechnologiescentertechnicaltest.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import ostaninakk.hightechnologiescentertechnicaltest.R;
+import ostaninakk.hightechnologiescentertechnicaltest.ui.ListFragment;
 
 public class ListActivity extends AppCompatActivity {
 
@@ -14,7 +17,7 @@ public class ListActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .add(R.id.fragmentContainer, ListFragment.newInstance())
+                    .replace(R.id.fragmentContainer, new ListFragment())
                     .commit();
         }
     }

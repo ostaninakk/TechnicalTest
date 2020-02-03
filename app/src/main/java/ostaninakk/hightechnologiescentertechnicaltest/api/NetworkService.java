@@ -1,4 +1,4 @@
-package ostaninakk.hightechnologiescentertechnicaltest;
+package ostaninakk.hightechnologiescentertechnicaltest.api;
 
 import java.security.cert.CertificateException;
 
@@ -9,11 +9,11 @@ import javax.net.ssl.X509TrustManager;
 
 import okhttp3.OkHttpClient;
 
-import ostaninakk.hightechnologiescentertechnicaltest.api.CompanyDataApi;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-class NetworkService {
+public class NetworkService {
     private static final String BASE_URL = "http://www.mocky.io/";
 
     private Retrofit retrofit;
@@ -22,21 +22,20 @@ class NetworkService {
     private NetworkService() {
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
-                /* Установить HttpClient, который доверяет сертификатам,
-                 * выданным любыми организациями сертификации */
                 .client(getUnsafeOkHttpClient())
                 .build();
     }
 
-    static NetworkService getInstance() {
+   public static NetworkService getInstance() {
         if (instance == null) {
             instance = new NetworkService();
         }
         return instance;
     }
 
-    CompanyDataApi getDataApi() {
+    public CompanyDataApi getDataApi() {
         return retrofit.create(CompanyDataApi.class);
     }
 
